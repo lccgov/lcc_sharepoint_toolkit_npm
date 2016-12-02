@@ -1,0 +1,10 @@
+{
+  "name": "lcc_sharepoint_toolkit",
+  "version": "0.0.0",
+  "description": "npm package for using the lcc sharepoint toolkit",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lccgov/lcc_sharepoint_toolkit_npm.git"
+  },
+  "license": "MIT"
+}
