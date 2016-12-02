@@ -36,9 +36,9 @@ rm -r lcc_sharepoint_toolkit-master
 rm new-toolkit.tar.gz
 
 VERSION_LATEST=`cat VERSION.txt`
-VERSION_REGISTRY=`npm view lcc_sharepoint_toolkit version`
+#VERSION_REGISTRY=`npm view lcc_sharepoint_toolkit version`
 
-if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
+#if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
   git config --global user.email "builds@travis-ci.org"
   git config --global user.name "Travis CI"
   git add -A
@@ -51,7 +51,7 @@ if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
   npm whoami
   npm publish
   git push --quiet https://$GITHUBKEY@github.com/$TRAVIS_REPO_SLUG > /dev/null 2>&1
-else
-  echo 'VERSION.txt is the same as the version available on the registry'
-  echo 'Not publishing anything'
-fi
+#else
+ # echo 'VERSION.txt is the same as the version available on the registry'
+#  echo 'Not publishing anything'
+#fi
