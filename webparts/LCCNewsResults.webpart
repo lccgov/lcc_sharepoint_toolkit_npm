@@ -43,7 +43,7 @@
         <property name="ShowViewDuplicates" type="bool">False</property>
         <property name="AllowHide" type="bool">True</property>
         <property name="BypassResultTypes" type="bool">True</property>
-        <property name="Description" type="string">Content Search Web Part will allow you to show items that are results of a search query you specify. When you add it to the page, this Web Part will show recently modified items from the current site. You can change this setting to show items from another site or list by editing the Web Part and changing its search criteria.As new content is discovered by search, this Web Part will display an updated list of items each time the page is viewed.</property>
+        <property name="Description" type="string"></property>
         <property name="ShowSortOptions" type="bool">False</property>
         <property name="ExportMode" type="exportmode">All</property>
         <property name="AllowMinimize" type="bool">True</property>

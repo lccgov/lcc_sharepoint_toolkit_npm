@@ -9,7 +9,7 @@
         <property name="ExportMode" type="exportmode">All</property>
         <property name="HelpUrl" type="string" />
         <property name="Hidden" type="bool">False</property>
-        <property name="Description" type="string">Allows authors to insert HTML snippets or scripts.</property>
+        <property name="Description" type="string"></property>
         <property name="Content" type="string">&lt;div&gt;
   &lt;div data-module="news-archive-filter" data-module-started="false"&gt;
     &lt;h3&gt;News Archive&lt;/h3&gt;
