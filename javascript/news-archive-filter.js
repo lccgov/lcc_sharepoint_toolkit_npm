@@ -28,8 +28,8 @@
 	                var source = $("#archive-template").html();
 	                var template = Handlebars.compile(source);
 
-	                $.ajax({
-	                    url: _spPageContextInfo.webAbsoluteUrl + "/_api/lists/getbytitle('pages')/items?$select=LCCCreated&$filter=ContentType eq 'LCC News Page'&$orderby=Created desc",
+                    $.ajax({
+	                    url: _spPageContextInfo.webAbsoluteUrl + "/_api/lists/getbytitle('pages')/items?$select=LCCMonthYear&$filter=ContentType eq 'Breeze News Article Page'&$orderby=Created desc",
 	                    type: "GET",
 	                    dataType: 'json',
 	                    headers: {
@@ -44,10 +44,10 @@
 
 	                        $.each(data.d.results, function (index, item) {
 
-	                            if (typeof prevMonth === 'undefined' || prevMonth != item.LCCCreated) {
+	                            if (typeof prevMonth === 'undefined' || prevMonth != item.LCCMonthYear) {
 
-	                                var itemYear = item.LCCCreated.substring(0, 4);
-	                                var itemMonth = item.LCCCreated.substring(4);
+	                                var itemYear = item.LCCMonthYear.substring(0, 4);
+	                                var itemMonth = item.LCCMonthYear.substring(4);
 	                                var monthAsString = monthsString[itemMonth];
 
 	                                if (typeof prevYear === 'undefined' || prevYear != itemYear) {
@@ -57,7 +57,7 @@
 	                                else {
 	                                    years[years.length - 1].months.push({ 'month': itemMonth, 'monthAsString': monthAsString });
 	                                }
-	                                prevMonth = item.LCCCreated;
+	                                prevMonth = item.LCCMonthYear;
 	                            }
 	                        });
 
