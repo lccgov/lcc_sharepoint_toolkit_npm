@@ -23,8 +23,6 @@
                 window.location = window.location.protocol + '//' + window.location.host + window.location.pathname + queryString;
             });
 
-            $( ".datepicker" ).datepicker({ dateFormat: 'yy/mm/dd' }).val();
-
         }
     };
 

@@ -29,7 +29,7 @@
 	                var template = Handlebars.compile(source);
 
                     $.ajax({
-	                    url: _spPageContextInfo.webAbsoluteUrl + "/_api/lists/getbytitle('pages')/items?$select=LCCMonthYear&$filter=ContentType eq 'Breeze News Article Page'&$orderby=Created desc",
+	                    url: _spPageContextInfo.webAbsoluteUrl + "/_api/lists/getbytitle('pages')/items?$select=LCCMonthYear&$filter=ContentType eq 'Breeze News Article Page'",
 	                    type: "GET",
 	                    dataType: 'json',
 	                    headers: {
@@ -42,23 +42,28 @@
 	                        var years = [];
 	                        var monthsString = ['None', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+							data.d['results'].sort(function (a, b) {
+								return b.LCCMonthYear - a.LCCMonthYear;
+							});
 	                        $.each(data.d.results, function (index, item) {
+								if (item.LCCMonthYear)
+								{
+									if (typeof prevMonth === 'undefined' || prevMonth != item.LCCMonthYear) {
 
-	                            if (typeof prevMonth === 'undefined' || prevMonth != item.LCCMonthYear) {
+										var itemYear = item.LCCMonthYear.substring(0, 4);
+										var itemMonth = item.LCCMonthYear.substring(4);
+										var monthAsString = monthsString[itemMonth];
 
-	                                var itemYear = item.LCCMonthYear.substring(0, 4);
-	                                var itemMonth = item.LCCMonthYear.substring(4);
-	                                var monthAsString = monthsString[itemMonth];
-
-	                                if (typeof prevYear === 'undefined' || prevYear != itemYear) {
-	                                    years.push({ 'year': itemYear, 'months': [{ 'month': itemMonth, 'monthAsString': monthAsString }] });
-	                                    prevYear = itemYear;
-	                                }
-	                                else {
-	                                    years[years.length - 1].months.push({ 'month': itemMonth, 'monthAsString': monthAsString });
-	                                }
-	                                prevMonth = item.LCCMonthYear;
-	                            }
+										if (typeof prevYear === 'undefined' || prevYear != itemYear) {
+											years.push({ 'year': itemYear, 'months': [{ 'month': itemMonth, 'monthAsString': monthAsString }] });
+											prevYear = itemYear;
+										}
+										else {
+											years[years.length - 1].months.push({ 'month': itemMonth, 'monthAsString': monthAsString });
+										}
+										prevMonth = item.LCCMonthYear;
+									}
+								}
 	                        });
 
 	                        var html = template({ Years: years });
