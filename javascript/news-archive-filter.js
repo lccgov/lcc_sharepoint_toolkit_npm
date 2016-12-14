@@ -3,6 +3,7 @@
 
 	    var LCC = global.LCC || {};
 	    LCC.Modules = LCC.Modules || {};
+		LCC.Settings = LCC.Settings || {};
 
 	    LCC.Modules.NewsArchiveFilter = function () {
 	        this.start = function (element) {
@@ -19,7 +20,8 @@
 	                var end = year + "/" + month + "/" + d.getDate();
 
 	                var queryString = "?startdate=" + start + "&enddate=" + end;
-	                window.location = window.location.protocol + '//' + window.location.host + window.location.pathname + queryString;
+	                var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : "/Pages/News.aspx";                   
+                	window.location = newsUrl + queryString;
 
 
 	            });	            
