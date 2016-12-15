@@ -71,6 +71,8 @@
 	                        var html = template({ Years: years });
 	                        $("#archive").html(html);
 
+							LCC.modules.start($("#newsAccordion"));
+
 	                    },
 	                    error: function (err) {
 	                        var html = "<p>Sorry, there is an error with this filter</p>";
