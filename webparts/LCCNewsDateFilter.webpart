@@ -10,14 +10,17 @@
         <property name="HelpUrl" type="string" />
         <property name="Hidden" type="bool">False</property>
         <property name="Description" type="string"></property>
-        <property name="Content" type="string">&lt;div id="dateRangeFilter" data-module="date-range-filter" data-module-started="false"&gt;
-  &lt;h3&gt;View News By Date&lt;/h3&gt;
-  &lt;div&gt;
-    &lt;input type="text" class="datepicker js-date-range-start"/&gt;
-    &lt;input type="text" class="datepicker js-date-range-end"/&gt;
-    &lt;a href="#" class="button js-date-range-submit"&gt;Go&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</property>
+        <property name="Content" type="string">&lt;div id="dateRangeFilter" class="sectionSubsite news" data-module="date-range-filter" data-module-started="false"&gt;
+                    &lt;h3&gt;View News By Date&lt;/h3&gt;
+                            &lt;div class="datePickerContainer"&gt;   
+                                &lt;input name="Start-date" type="text" class="searchDate js-date-range-start" data-type="datepicker-start-nomin" placeholder="Start Date"&gt;
+                                &lt;/div&gt;
+                                  &lt;div class="datePickerContainer"&gt;
+                                &lt;input name="End-date" type="text" class="searchDate js-date-range-end" data-type="datepicker-end-nomin" placeholder="End Date"&gt;
+                                &lt;a href="#" class="button js-date-range-submit"&gt;Go&lt;/a&gt;
+                            &lt;/div&gt;
+                       &lt;div class="clearfix"&gt;&lt;/div&gt;     
+                 &lt;/div&gt;</property>
         <property name="CatalogIconImageUrl" type="string" />
         <property name="Title" type="string">LCCNewsDateFilter</property>
         <property name="AllowHide" type="bool">True</property>

@@ -10,7 +10,7 @@
         <property name="HelpUrl" type="string" />
         <property name="Hidden" type="bool">False</property>
         <property name="Description" type="string"></property>
-        <property name="Content" type="string">&lt;div id="keywordFilter" data-module="keyword-filter" data-module-started="false"&gt;
+        <property name="Content" type="string">&lt;div id="keywordFilter" data-module="keyword-filter" class="sectionSubsite news" data-module-started="false"&gt;
   &lt;h3&gt;View News By Keyword&lt;/h3&gt;
   &lt;div&gt;
     &lt;input type="text" class="js-keyword"/&gt;

@@ -11,21 +11,27 @@
         <property name="Hidden" type="bool">False</property>
         <property name="Description" type="string"></property>
         <property name="Content" type="string">&lt;div&gt;
-  &lt;div data-module="news-archive-filter" data-module-started="false"&gt;
+  &lt;div data-module="news-archive-filter" class="sectionSubsite news" data-module-started="false"&gt;
     &lt;h3&gt;News Archive&lt;/h3&gt;
     &lt;div id="archive"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 
   &lt;script id="archive-template" type="text/x-handlebars-template"&gt;
-    {{#each Years}}
-    &lt;div class="entry"&gt;
-      &lt;h4&gt;{{year}}&lt;/h4&gt;
-      {{#months}}
-        &lt;div&gt;&lt;a class="js-news-archive-filter-submit" data-year='{{../year}}' data-month='{{month}}' href="#"&gt;{{monthAsString}}&lt;/a&gt;&lt;/div&gt;
-      {{/months}}
-    &lt;/div&gt;
-    {{/each}}
+    &lt;ul class="accordion" data-module="accordion" id="newsAccordion"&gt
+                    {{#each Years}}
+                    &lt;li&gt
+                    &lt;div class="accordion-drawer"&gt
+                        &lt;a class="header" href="#"&gt&lt;span id="tooltip" class="sr-only"&gtClick to expand&lt;/span&gt{{year}}&lt;/a&gt
+                        &lt;div class="content-block"&gt
+                            {{#months}}
+                            &lt;a class="js-news-archive-filter-submit" data-year='{{../year}}' data-month='{{month}}' href="#"&gt{{monthAsString}}&lt;/a&gt
+                            {{/months}}
+                        &lt;/div&gt
+                    &lt;/div&gt
+                    &lt;/li&gt
+                    {{/each}}
+                    &lt;/ul&gt
   &lt;/script&gt;
 </property>
         <property name="CatalogIconImageUrl" type="string" />
