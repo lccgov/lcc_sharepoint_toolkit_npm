@@ -31,7 +31,7 @@
 	                var template = Handlebars.compile(source);
 
                     $.ajax({
-	                    url: _spPageContextInfo.webAbsoluteUrl + "/_api/lists/getbytitle('pages')/items?$select=LCCMonthYear&$filter=ContentType eq 'Breeze News Article Page'",
+	                    url: _spPageContextInfo.webAbsoluteUrl + "/_api/lists/getbytitle('pages')/items?$select=LCCMonthYear&$filter=OData__ModerationStatus eq 0 and ContentType eq 'Breeze News Article Page'",
 	                    type: "GET",
 	                    dataType: 'json',
 	                    headers: {
