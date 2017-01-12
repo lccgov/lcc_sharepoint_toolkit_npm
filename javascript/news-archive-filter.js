@@ -20,7 +20,7 @@
 	                var end = year + "/" + month + "/" + d.getDate();
 
 	                var queryString = "?startdate=" + start + "&enddate=" + end;
-	                var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : "/Pages/News.aspx";                   
+	                var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : "/Pages/NewsSearch.aspx";                   
                 	window.location = newsUrl + queryString;
 
 
@@ -53,7 +53,7 @@
 									if (typeof prevMonth === 'undefined' || prevMonth != item.LCCMonthYear) {
 
 										var itemYear = item.LCCMonthYear.substring(0, 4);
-										var itemMonth = item.LCCMonthYear.substring(4);
+										var itemMonth = parseInt(item.LCCMonthYear.substring(4),10);
 										var monthAsString = monthsString[itemMonth];
 
 										if (typeof prevYear === 'undefined' || prevYear != itemYear) {

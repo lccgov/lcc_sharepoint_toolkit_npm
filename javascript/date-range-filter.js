@@ -21,7 +21,7 @@
                 var end = enddate || today;
 
                 var queryString = "?startdate=" + start + "&enddate=" + end;
-                var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : "/Pages/News.aspx";                   
+                var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : "/Pages/NewsSearch.aspx";                   
                 window.location = newsUrl + queryString;
             });
 

@@ -9,7 +9,7 @@
         this.start = function (element) {
             element.on('click', '.js-keyword-submit', function () {
                 var queryString = "?k=" + element.find('.js-keyword').val();
-                var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : "/Pages/News.aspx";                   
+                var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : "/Pages/NewsSearch.aspx";                   
                 window.location = newsUrl + queryString;
             });
 
