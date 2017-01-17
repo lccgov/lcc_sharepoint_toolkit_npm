@@ -1,0 +1,106 @@
+﻿<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>Item Accordion</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">'Picture URL'{Picture URL}:'PublishingImage;PictureURL;PictureThumbnailURL','Link1 URL'{Link1 URL}:'ConcertinaLink1OWSURLH','Link2 URL'{Link2 URL}:'ConcertinaLink2OWSURLH','Link3 URL'{Link3 URL}:'ConcertinaLink3OWSURLH','Line 1'{Line 1}:'Title','Line 2'{Line 2}:'','Line 3'{Main Body Text}:'ConcertinaMainBodyOWSMTXT','Custom Title'{Custom Title}:'List Display Web Part','SecondaryFileExtension','ContentTypeId'</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a 100x100 picture of the item on the left. The title and the default item description will display to the right of the picture with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">http://breeze-2013.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item_Accordion.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    <div id="">
+
+<!--#_
+
+var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_Accordion_");
+
+	var linkURL1 = $getItemValue(ctx, "Link1 URL");
+	var linkURL1desc = '';
+	if(!linkURL1.isEmpty){
+		var linkURL1desc = linkURL1.inputValue.split(',')[1];
+	}
+	linkURL1.overrideValueRenderer($urlHtmlEncode);
+
+
+	var linkURL2 = $getItemValue(ctx, "Link2 URL");
+	var linkURL2desc = '';
+	if(!linkURL2.isEmpty){
+		var linkURL2desc = linkURL2.inputValue.split(',')[1];
+	}
+	linkURL2.overrideValueRenderer($urlHtmlEncode);
+
+	var linkURL3 = $getItemValue(ctx, "Link3 URL");
+	var linkURL3desc = '';
+	if(!linkURL3.isEmpty){
+		var linkURL3desc = linkURL3.inputValue.split(',')[1];
+	}
+	linkURL3.overrideValueRenderer($urlHtmlEncode);
+
+
+var line1 = $getItemValue(ctx, "Line 1");
+var line2 = $getItemValue(ctx, "Line 2");
+var line3 = $getItemValue(ctx, "Line 3");
+
+var pictureURL = $getItemValue(ctx, "Picture URL");
+
+
+
+var dataDisplayTemplateTitle = "Accordion";
+
+ _#-->
+
+        
+		<div class="accordion-drawer">
+
+				<a href="#" class="header"><span id="tooltip" class="sr-only">Click to expand</span>_#= line1 =#_</a>
+
+			<div class="content-block">
+				_#= STSHtmlDecode(line3.value) =#_
+			
+				
+<!--#_
+if(!linkURL1.isEmpty)
+{
+_#-->
+				<a href="_#= linkURL1 =#_" class="btn btn-primary" rel="external" target="_blank">_#= linkURL1desc =#_</a>
+<!--#_
+}
+_#-->
+
+<!--#_
+if(!linkURL2.isEmpty)
+{
+_#-->
+				<a href="_#= linkURL2 =#_" class="btn btn-primary" rel="external" target="_blank">_#= linkURL2desc =#_</a>
+<!--#_
+}
+_#-->
+				
+<!--#_
+if(!linkURL3.isEmpty)
+{
+_#-->
+
+				<a href="_#= linkURL3 =#_" class="btn btn-primary" rel="external" target="_blank">_#= linkURL3desc =#_</a> 
+<!--#_
+}
+_#-->
+  			</div>
+		</div>
+	</div>      
+</body>
+</html>
+

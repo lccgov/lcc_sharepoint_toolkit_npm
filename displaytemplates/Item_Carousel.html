@@ -1,0 +1,49 @@
+﻿<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>Item Carousel</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">'Picture URL'{Picture URL}:'CarouselImageSlideOWSIMGE;PublishingImage;PictureURL;PictureThumbnailURL','Link URL'{Link URL}:'CarouselUrlOWSURLH','Line 1'{Line 1}:'Title','Line 2'{Line 2}:'CarouselTextOWSMTXT','SecondaryFileExtension','ContentTypeId'</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a 100x100 picture of the item on the left. The title and the default item description will display to the right of the picture with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://breeze-beta.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item_Carousel.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:ContentType msdt:dt="string">Item Display Template</mso:ContentType>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+    <script>$includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");</script>
+    <div id="">
+<!--#_
+var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_carousel_");
+var linkURL = $getItemValue(ctx, "Link URL");
+linkURL.overrideValueRenderer($urlHtmlEncode);
+var line1 = $getItemValue(ctx, "Line 1");
+var line2 = $getItemValue(ctx, "Line 2");
+var pictureURL = $getItemValue(ctx, "Picture URL");
+var dataDisplayTemplateTitle = "carousel";
+
+
+console.log(pictureURL);
+console.log(linkURL);
+
+
+
+ _#-->     
+		<div class="fill" style="background-image:url(_#= pictureURL =#_);"></div>
+			<div class="carousel-caption">
+		      	<a href="_#= linkURL.value =#_">
+		      		<h2><span> _#= line1 =#_</span></h2>
+		          	<p>_#=STSHtmlDecode(line2.value)=#_</p>
+		        </a>
+	        </div>
+		</div>		
+</body>
+</html>
+

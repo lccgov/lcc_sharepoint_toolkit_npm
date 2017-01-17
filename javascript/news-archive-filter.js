@@ -31,8 +31,9 @@
 	                var template = Handlebars.compile(source);
 
 					var today = new Date();
+					var newsContentType = ( LCC.Settings.NewsContentType !== undefined ) ? LCC.Settings.NewsContentType : "News Article Page";
                     $.ajax({
-	                    url: _spPageContextInfo.webAbsoluteUrl + "/_api/lists/getbytitle('pages')/items?$select=LCCMonthYear&$filter=NewsReleaseDate le '" + today.toISOString() + "' and OData__ModerationStatus eq 0 and ContentType eq 'Breeze News Article Page'",
+	                    url: _spPageContextInfo.webAbsoluteUrl + "/_api/lists/getbytitle('pages')/items?$select=LCCMonthYear&$filter=NewsReleaseDate le '" + today.toISOString() + "' and OData__ModerationStatus eq 0 and ContentType eq '" + newsContentType + "'",
 	                    type: "GET",
 	                    dataType: 'json',
 	                    headers: {

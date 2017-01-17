@@ -1,0 +1,88 @@
+﻿<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>LCC News Item</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">'Picture URL'{Picture URL}:'PublishingImage;PictureURL;PictureThumbnailURL','Link URL'{Link URL}:'Path','Line 1'{Line 1}:'Title','Line 2'{Line 2}:'ArticleByLineOWSTEXT','Line 3'{Article Date}:'NewsReleaseDateOWSDATE','SecondaryFileExtension','ContentTypeId'</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a 100x100 picture of the item on the left. The title and the default item description will display to the right of the picture with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">http://breeze-2013.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item_LCC_News.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    <div id="Item_LCC_News">
+
+<!--#_
+
+var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_LCC_News_");
+
+var linkURL = $getItemValue(ctx, "Link URL");
+linkURL.overrideValueRenderer($urlHtmlEncode);
+
+var line1 = $getItemValue(ctx, "Line 1");
+var line2 = $getItemValue(ctx, "Line 2");
+var ArticleDate = $getItemValue(ctx, "Line 3");
+
+var pictureURL = $getItemValue(ctx, "Picture URL");
+var pictureId = encodedId + "picture";
+var pictureMarkup = Srch.ContentBySearch.getPictureMarkup(pictureURL, 100, 100, ctx.CurrentItem, "cbs-picture3LinesImg", line1, pictureId);
+
+line1.overrideValueRenderer($contentLineText);
+line2.overrideValueRenderer($contentLineText);
+
+var containerId = encodedId + "container";
+var pictureLinkId = encodedId + "pictureLink";
+var pictureContainerId = encodedId + "pictureContainer";
+var dataContainerId = encodedId + "dataContainer";
+var line1LinkId = encodedId + "line1Link";
+var line1Id = encodedId + "line1";
+var line2Id = encodedId + "line2";
+
+var dataDisplayTemplateTitle = "ItemPicture3Lines";
+
+ _#-->
+            <li style="display: list-item;">
+                <div class="contentPod">
+<!--#_
+if(!linkURL.isEmpty)
+{
+_#-->
+
+                    <a href="_#= linkURL =#_" title="_#= $htmlEncode(line1.defaultValueRenderer(line1)) =#_">
+<!--#_
+}
+_#-->
+                        <div class="floatLeft">
+                            <img src="_#= pictureURL =#_" width="120px" height="120px" />
+                        </div>
+                        <div width="600px">
+                        <p class="date">_#= ArticleDate =#_ </p>
+                        <h3 class="" id="_#= line1Id =#_"> _#= line1 =#_</h3>                  
+<!--#_
+if(!line2.isEmpty)
+{
+_#-->                   
+                        <p id="_#= line2Id =#_" > _#= line2 =#_</p>
+<!--#_
+}
+_#-->
+                        </div>
+                    </a>
+                </div>
+            </li>
+    </div>
+</body>
+</html>
+

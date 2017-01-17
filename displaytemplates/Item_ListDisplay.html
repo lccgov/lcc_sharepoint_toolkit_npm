@@ -1,0 +1,67 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>List Display Item Template</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">'Created':'Created',Title':'Title','Picture URL'{Picture URL}:PublishingImage;PictureURL;PictureThumbnailURL','Link URL'{Link URL}:'Path','ContentType':'ContentType','FileExtension','SecondaryFileExtension','Custom Title'{Custom Title}:'List Display Web Part','Custom Css Class'{Custom CSS class}:'</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a small thumbnail icon next to a hyperlink of the item title, with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">http://breeze-2013.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item_ListDisplay.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+
+    <!--
+            Warning: Do not try to add HTML to this section. Only the contents of the first <div>
+            inside the <body> tag will be used while executing Display Template code. Any HTML that
+            you add to this section will NOT become part of your Display Template.
+    -->
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    <!--
+        Use the div below to author your Display Template. Here are some things to keep in mind:
+        * Surround any JavaScript logic as shown below using a "pound underscore" (#_ ... _#) token
+        inside a comment.
+
+        * Use the values assigned to your variables using an "underscore pound equals"
+        (_#= ... =#_) token.
+    -->
+
+    <div id="TwoLines">
+<!--#_
+
+    var pictureURL = $getItemValue(ctx, "Picture URL");
+    var created = $getItemValue(ctx, "Created");
+    var ct = $getItemValue(ctx, "ContentType") == null ? "" : $getItemValue(ctx, "ContentType");
+    var linkURL = $getItemValue(ctx, "Link URL");
+    var description = $getItemValue(ctx, "RoutingRuleDescription");
+    var comments = $getItemValue(ctx, "Comments");
+    linkURL.overrideValueRenderer($urlHtmlEncode);
+_#-->
+<!--#_
+    if(ct.toString() !== "LCCListDisplay")
+    {
+_#-->
+    <li>
+    <a href="_#= linkURL =#_">
+    <img src="_#= pictureURL =#_">    
+        _#= ctx.CurrentItem.Title =#_</a></li>
+<!--#_
+    } else { 
+        ctx.ClientControl["lcc_list_display_introduction"] = ctx.CurrentItem.Title;
+    }
+_#-->
+    </div>
+</body>
+</html>
