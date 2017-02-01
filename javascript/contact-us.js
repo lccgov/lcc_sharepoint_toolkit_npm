@@ -4,27 +4,24 @@
 	    var LCC = global.LCC || {};
 	    LCC.Modules = LCC.Modules || {};
 
-	    LCC.Modules.PageComments = function () {
+	    LCC.Modules.ContactUs = function () {
 	        this.start = function (element) {
 
 				var inDesignMode = document.forms[MSOWebPartPageFormName].MSOLayout_InDesignMode.value;
 
 				if (inDesignMode != "1")
-                {
+{
 					var nameInput = $("input[title='Name']");
 					var emailInput = $("input[title='Email']");
-					var commentsInput = $("textarea[title='Comments']");
-					var furtherInput = $("textarea[title='Further']");
+					var messageInput = $("textarea[title='Message']");
 
 					$("#aspnetForm").validate();
 
 					$(nameInput).rules("add", {
 						required: true,
-						maxlength: 50,
 						messages:
 						{
-							required: "Please enter your name",
-							maxlength: "Maximum number of characters is 50"
+							required: "Please enter your name"
 						}
 					});
 
@@ -38,20 +35,12 @@
 					    }
 					});
 					
-					$(commentsInput).rules("add", {
+					$(messageInput).rules("add", {
 						required: true,
 						maxlength: 1000,
 						messages:
 						{
 							required: "Please enter your comments",
-							maxlength: "Maximum number of characters is 1000"
-						}
-					});
-					
-					$(furtherInput).rules("add", {
-						maxlength: 1000,
-						messages:
-						{
 							maxlength: "Maximum number of characters is 1000"
 						}
 					});
