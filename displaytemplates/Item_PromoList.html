@@ -1,0 +1,67 @@
+﻿<!--
+	Display Template Version 1.0
+	Date: 31/01/2017
+-->
+
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>Item Promo List</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">&#39;Picture URL&#39;{Picture URL}:&#39;PromoImageOWSIMGE;PublishingImage;PictureURL;PictureThumbnailURL&#39;,&#39;Title&#39;{Title}:&#39;Title&#39;,&#39;Promo1&#39;{Promo1}:&#39;PromoDescriptionOWSMTXT&#39;,&#39;Promo2&#39;{Promo2}:&#39;PromoDescriptionTwoOWSMTXT&#39;,&#39;Promo HTML&#39;{Promo HTML}:&#39;PromoHTMLContentOWSHTML&#39;,&#39;PromoLink&#39;{Promo Link}:&#39;PromoLinkOWSURLH;Path&#39;,&#39;PromoIcon&#39;{Promo Icon}:&#39;PromoIconOWSTEXT&#39;,&#39;PromoCSS&#39;{Promo CSS Class}:&#39;PromoCSSClassOWSTEXT&#39;,&#39;Custom Title&#39;{Custom Title}:&#39;List Display Web Part&#39;,&#39;PromoDisplayType&#39;{Promo Display Class Type}:&#39;default&#39;,&#39;SecondaryFileExtension&#39;,&#39;ContentTypeId&#39;</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a 100x100 picture of the item on the left. The title and the default item description will display to the right of the picture with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://leedssafeguardingadults-beta.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item PromoList.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    <div id="Item_Promo">
+
+<!--#_
+
+var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_Promo_");
+var Title = $getItemValue(ctx, "Title");
+var PromoLink = $getItemValue(ctx, "PromoLink");
+var PromoDescrip1 = $getItemValue(ctx, "Promo1");
+var PromoDescrip2 = $getItemValue(ctx, "Promo2");
+var PromoHTML = $getItemValue(ctx, "Promo HTML");
+var PromoIcon = $getItemValue(ctx, "PromoIcon");
+var PromoCSS = $getItemValue(ctx, "PromoCSS");
+var PromoDisplayType = $getItemValue(ctx, "PromoDisplayType");
+var pictureURL = $getItemValue(ctx, "Picture URL");
+
+
+ _#-->
+
+		<li class="_#= PromoCSS =#_">
+			<!--#_
+			if(!PromoHTML.isEmpty)  {   
+			_#-->
+			
+			<div>_#= STSHtmlDecode(PromoHTML.value) =#_</div>
+	
+			<!--#_
+			} 
+			_#-->
+		
+			<a href="_#= PromoLink =#_" rel="_#= PromoIcon =#_" style="background:url(_#= pictureURL =#_) no-repeat;">
+				<span class="info">_#= Title =#_<span class="secondaryInfo">_#= STSHtmlDecode(PromoDescrip1.value) =#_</span>
+	            <span class="arrow"></span></span><span class="thirdInfo">_#= STSHtmlDecode(PromoDescrip2.value) =#_</span>
+			</a>	
+		</li>
+ 	</div>      
+</body>
+</html>
