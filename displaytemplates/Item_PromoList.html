@@ -57,9 +57,23 @@ var pictureURL = $getItemValue(ctx, "Picture URL");
 			} 
 			_#-->
 		
-			<a href="_#= PromoLink =#_" rel="_#= PromoIcon =#_" style="background:url(_#= pictureURL =#_) no-repeat;">
-				<span class="info">_#= Title =#_<span class="secondaryInfo">_#= STSHtmlDecode(PromoDescrip1.value) =#_</span>
-	            <span class="arrow"></span></span><span class="thirdInfo">_#= STSHtmlDecode(PromoDescrip2.value) =#_</span>
+			<a href="_#= PromoLink.value =#_" rel="_#= PromoIcon =#_" style="background:url(_#= pictureURL =#_) no-repeat;">
+				<span class="info">_#= Title =#_
+                    <!--#_
+			if(!PromoDescrip1.isEmpty)  {   
+			_#-->
+                    <span class="secondaryInfo">_#= STSHtmlDecode(PromoDescrip1.value) =#_</span>
+              	<!--#_
+			} 
+			_#-->      
+	            <span class="arrow"></span></span>
+                <!--#_
+			if(!PromoDescrip2.isEmpty)  {   
+			_#-->
+                <span class="thirdInfo">_#= STSHtmlDecode(PromoDescrip2.value) =#_</span>
+            	<!--#_
+			} 
+			_#-->    
 			</a>	
 		</li>
  	</div>      
