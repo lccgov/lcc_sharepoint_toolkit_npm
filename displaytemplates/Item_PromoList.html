@@ -16,7 +16,7 @@
 <mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
 <mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
 <mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
-<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://leedssafeguardingadults-beta.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item PromoList.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://whatson-beta.leeds.gov.uk/_catalogs/masterpage/Display%20Templates/Content%20Web%20Parts/Item_PromoList.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
 <mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
 <mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
 </mso:CustomDocumentProperties>
@@ -57,23 +57,33 @@ var pictureURL = $getItemValue(ctx, "Picture URL");
 			} 
 			_#-->
 		
-			<a href="_#= PromoLink.value =#_" rel="_#= PromoIcon =#_" style="background:url(_#= pictureURL =#_) no-repeat;">
+			<a href="_#= PromoLink =#_" rel="_#= PromoIcon =#_" style="background:url(_#= pictureURL =#_) no-repeat;">
+			
+							<!--#_
+			if(!PromoIcon.isEmpty)  {   
+			_#-->
+			<i class="_#= PromoIcon =#_"></i>	
+						<!--#_
+			} 
+			_#-->
+				
 				<span class="info">_#= Title =#_
-                    <!--#_
+						<!--#_
 			if(!PromoDescrip1.isEmpty)  {   
 			_#-->
-                    <span class="secondaryInfo">_#= STSHtmlDecode(PromoDescrip1.value) =#_</span>
-              	<!--#_
+				<span class="secondaryInfo equal-item">_#= STSHtmlDecode(PromoDescrip1.value) =#_</span>
+					<!--#_
 			} 
-			_#-->      
-	            <span class="arrow"></span></span>
-                <!--#_
-			if(!PromoDescrip2.isEmpty)  {   
 			_#-->
-                <span class="thirdInfo">_#= STSHtmlDecode(PromoDescrip2.value) =#_</span>
-            	<!--#_
+		
+	            <span class="arrow"></span></span>
+							<!--#_
+			if(!PromoDescrip2.isEmpty)  {   
+			_#-->	
+				<span class="thirdInfo">_#= STSHtmlDecode(PromoDescrip2.value) =#_</span>
+								<!--#_
 			} 
-			_#-->    
+			_#-->
 			</a>	
 		</li>
  	</div>      
