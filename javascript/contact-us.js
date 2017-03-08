@@ -37,14 +37,17 @@
 					
 					$(messageInput).rules("add", {
 						required: true,
-						maxlength: 1000,
 						messages:
 						{
-							required: "Please enter your comments",
-							maxlength: "Maximum number of characters is 1000"
+							required: "Please enter your comments"
 						}
 					});
-				}	
+				}
+
+				$('#txtContactUsMessage').keyup(function () {
+					var message = LCC.MaxCharacters.setMaxCharacters($(this), 1000);					
+					$(this).parent().find('.scopeNote').html(message);
+				});	
 
             }
         
