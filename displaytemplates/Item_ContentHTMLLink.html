@@ -10,13 +10,13 @@
 <!--[if gte mso 9]><xml>
 <mso:CustomDocumentProperties>
 <mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
-<mso:ManagedPropertyMapping msdt:dt="string">PictureURL{Picture URL}:PromoImageOWSIMGE;PublishingImage;PictureURL;PictureThumbnailURL,Title{Promo Title}:Title,PromoDescription{PromoDescription}:PromoDescriptionOWSMTXT,PromoHTML{PromoHTML}:PromoHTMLContentOWSHTML,PromoDescriptionTwo{PromoDescriptionTwo}:PromoDescriptionTwoOWSMTXT,PromoLink{Promo Link}:PromoLinkOWSURLH;Path,PromoIcon{Promo Icon}:PromoIconOWSTEXT,PromoCSS{Promo CSS Class}:PromoCSSClassOWSTEXT,Custom Title{Custom Title}:List Display Web Part,PromoDisplayType{Promo Display Class Type}:default,SecondaryFileExtension,ContentTypeId</mso:ManagedPropertyMapping>
+<mso:ManagedPropertyMapping msdt:dt="string">PictureURL{Picture URL}:PromoImageOWSIMGE;PublishingImage;PictureURL;PictureThumbnailURL,Title{Promo Title}:Title,PromoDescription{PromoDescription}:PromoDescriptionOWSMTXT,PromoHTML{PromoHTML}:PromoHTMLContentOWSHTML,PromoDescriptionTwo{PromoDescriptionTwo}:PromoDescriptionTwoOWSMTXT,PromoLink{Promo Link}:PromoLinkOWSURLH,PromoIcon{Promo Icon}:PromoIconOWSTEXT,PromoCSS{Promo CSS Class}:PromoCSSClassOWSTEXT,Custom Title{Custom Title}:List Display Web Part,PromoDisplayType{Promo Display Class Type}:default,SecondaryFileExtension,ContentTypeId</mso:ManagedPropertyMapping>
 <mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a 100x100 picture of the item on the left. The title and the default item description will display to the right of the picture with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
 <mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
 <mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
 <mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
 <mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
-<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://leedssafeguardingadults-beta.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item contentLink.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://www-beta.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item_ContentHTMLLink.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
 <mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
 <mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
 </mso:CustomDocumentProperties>
@@ -65,16 +65,27 @@ var dataDisplayTemplateTitle = "Accordion";
 			<!--#_
 			} 
 			_#-->
-				<h2>_#= Title =#_</h2>
+				<h2>
+
+						<!--#_
+			if(!PromoIcon.isEmpty)  {   
+			_#-->
+					
+					<i class="fa _#= PromoIcon =#_" aria-hidden="true"></i>
+					<!--#_
+			} 
+			_#-->	
+					
+					 _#= Title =#_</h2>
 						
-				<p>_#= PromoHTML.value =#_</p>
+				_#= PromoHTML.value =#_
 
 			<!--#_
 			if(!PromoLink.isEmpty)  {   
 			_#-->
 		
 			<a href="_#= PromoLink =#_" class="btn btn-primary">
-				_#= LinkDesc =#_
+				<span>_#= LinkDesc =#_</span>
 			</a>
 			<!--#_
 			} 
