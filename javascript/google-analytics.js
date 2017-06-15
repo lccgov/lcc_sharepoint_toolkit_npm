@@ -11,10 +11,13 @@
 
     LCC.GoogleAnalytics.getListData = function () {
 
-        var listName = "Reusable Content";
+        var hostUrl = document.location.protocol + "//" + document.location.host
+        var listUrl = document.location.protocol + "//" + document.location.host + "/Lists/SharedElements/*"
+        var url = hostUrl + "/_api/search/query?querytext='Title:\"GoogleAnalytics\"Path:\"" + listUrl + "\"'&QueryTemplatePropertiesUrl='spfile://webroot/queryparametertemplate.xml'"
+
 
         $.ajax({
-            url: "/_api/web/lists/getbytitle('" + listName + "')/items?$filter=Title eq 'GoogleAnalytics'",
+            url: url,
             method: "GET",
             headers: {
                 "Accept": "application/json; odata=verbose",
@@ -30,7 +33,7 @@
         var listItemInfo = '';
 
         $.each(data.d.results, function (key, value) {
-            listItemInfo += value.ReusableText;
+            listItemInfo += value.SharedText;
         });
 
         $('#GoogleAnalytics').html(listItemInfo);
