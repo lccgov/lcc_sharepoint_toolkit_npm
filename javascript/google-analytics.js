@@ -11,10 +11,9 @@
 
     LCC.GoogleAnalytics.getListData = function () {
 
-        var hostUrl = document.location.protocol + "//" + document.location.host
-        var listUrl = document.location.protocol + "//" + document.location.host + "/Lists/SharedElements/*"
-        var url = hostUrl + "/_api/search/query?querytext='Title:\"GoogleAnalytics\"Path:\"" + listUrl + "\"'&QueryTemplatePropertiesUrl='spfile://webroot/queryparametertemplate.xml'"
-
+        var hostUrl = document.location.protocol + "//" + document.location.host;
+        var listUrl = document.location.protocol + "//" + document.location.host + "/Lists/SharedElements/*";
+        var url = hostUrl + "/_api/search/query?querytext='Title:\"GoogleAnalytics\"Path:\"" + listUrl + "\"'&QueryTemplatePropertiesUrl='spfile://webroot/queryparametertemplate.xml'&selectproperties='Title,SharedTextOWSMTXT'";
 
         $.ajax({
             url: url,
@@ -29,11 +28,10 @@
     }
 
     LCC.GoogleAnalytics.onQuerySucceeded = function (data) {
-
         var listItemInfo = '';
 
-        $.each(data.d.results, function (key, value) {
-            listItemInfo += value.SharedText;
+        $.each(data.d.query.PrimaryQueryResult.RelevantResults.Table.Rows.results, function (key, value) {
+            listItemInfo += value.Cells.results[3].Value;
         });
 
         $('#GoogleAnalytics').html(listItemInfo);
