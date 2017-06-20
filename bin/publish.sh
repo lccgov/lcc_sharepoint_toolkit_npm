@@ -18,6 +18,7 @@ tar -xzf new-toolkit.tar.gz
 cd lcc_sharepoint_toolkit-master/
 
 rm -f package.json
+rm -f package-lock.json
 
 # Toolkit development happens in a separate repository, so remove dev and docs-related things
 rm -f readme.md
