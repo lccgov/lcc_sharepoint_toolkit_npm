@@ -1,0 +1,91 @@
+﻿<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>Item Alert</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">&#39;Link URL&#39;{Link URL}:&#39;AlertLinkOWSURLH&#39;,&#39;Path&#39;,&#39;Title&#39;{Title}:&#39;Title&#39;,&#39;AlertLink&#39;{AlertLink}:&#39;AlertLinkOWSURLH&#39;,&#39;AlertContent&#39;{AlertContent}:&#39;AlertContentOWSHTML&#39;,&#39;AlertCSS&#39;{AlertCSS}:&#39;AlertCSSOWSTEXT&#39;,&#39;FileExtension&#39;,&#39;SecondaryFileExtension&#39;</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a small thumbnail icon next to a hyperlink of the item title, with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://myfuture.leeds.gov.uk/_catalogs/masterpage/Display%20Templates/Content%20Web%20Parts/Item_Alert.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+
+    <!--
+            Warning: Do not try to add HTML to this section. Only the contents of the first <div>
+            inside the <body> tag will be used while executing Display Template code. Any HTML that
+            you add to this section will NOT become part of your Display Template.
+    -->
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    <!--
+        Use the div below to author your Display Template. Here are some things to keep in mind:
+        * Surround any JavaScript logic as shown below using a "pound underscore" (#_ ... _#) token
+        inside a comment.
+
+        * Use the values assigned to your variables using an "underscore pound equals"
+        (_#= ... =#_) token.
+    -->
+
+    <div id="Alerts">
+<!--#_
+var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_2lines_");
+
+var linkURL = $getItemValue(ctx, "Link URL");
+linkURL.overrideValueRenderer($urlHtmlEncode);
+
+var AlertLink = $getItemValue(ctx, "AlertLink");
+var AlertLinkDescription = '';
+if(!AlertLink.isEmpty){
+	var AlertLinkDescription = AlertLink.inputValue.split(',')[1];
+}
+AlertLink.overrideValueRenderer($urlHtmlEncode);
+
+
+var Title = $getItemValue(ctx, "Title");
+var AlertContent = $getItemValue(ctx, "AlertContent");
+var AlertCSS = $getItemValue(ctx, "AlertCSS");
+
+Title.overrideValueRenderer($contentLineText);
+AlertContent.overrideValueRenderer($contentLineText);
+
+var dataContainerId = encodedId + "dataContainer";
+var line1LinkId = encodedId + "line1Link";
+var TitleId = encodedId + "Title";
+var AlertContentId = encodedId + "AlertContent";
+
+_#-->
+
+        <div class="alert-wrapper">
+		   <div class="alert _#=AlertCSS=#_ alert-dismissible" role="alert">
+		      <div class="container-fluid">
+		         <div class="alertInner">
+		            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+		            <h2>_#= Title =#_</h2>
+		            <p>_#= AlertContent =#_</p>
+                        <!--#_
+                        if(!AlertLink.isEmpty)
+                        {
+                        _#-->
+                        <a class="btn btn-default" href="_#= AlertLink.value =#_">_#= AlertLinkDescription =#_</a>
+                        <!--#_
+                        }
+                        _#-->
+                </div>
+		      </div>
+		   </div>
+		</div>
+             
+    </div>
+</body>
+</html>
