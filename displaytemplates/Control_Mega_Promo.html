@@ -1,0 +1,141 @@
+<!--
+	Display Template Version 1.0
+	Date: 31/01/2017
+-->
+
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>Control Mega Promo</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:MasterPageDescription msdt:dt="string">This is the default Control Display Template that will list the items. It does not allow the user to page through items.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106601002BE308FDB2F0D748A2F7640AD38A72D5</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://www-alpha.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Control_Mega_Promo.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+
+<mso:FSObjType msdt:dt="string">0</mso:FSObjType>
+<mso:FileDirRef msdt:dt="string">sites/uisite/_catalogs/masterpage/Display Templates/Content Web Parts</mso:FileDirRef>
+<mso:ContentType msdt:dt="string">Control Display Template</mso:ContentType>
+<mso:FileLeafRef msdt:dt="string">Control_List.html</mso:FileLeafRef>
+
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
+
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+
+    <!--
+            Warning: Do not try to add HTML to this section. Only the contents of the first <div>
+            inside the <body> tag will be used while executing Display Template code. Any HTML that
+            you add to this section will NOT become part of your Display Template.
+    -->
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    <!--
+        Use the div below to author your Display Template. Here are some things to keep in mind:
+        * Surround any JavaScript logic as shown below using a "pound underscore" (#_ ... _#) token
+        inside a comment.
+
+        * Use the values assigned to your variables using an "underscore pound equals"
+        (_#= ... =#_) token.
+    -->
+
+    <div id="Mega_Control_Promo">
+
+<!--#_ 
+if (!$isNull(ctx.ClientControl) &&
+    !$isNull(ctx.ClientControl.shouldRenderControl) &&
+    !ctx.ClientControl.shouldRenderControl())
+{
+    return "";
+}
+ctx.ListDataJSONGroupsKey = "ResultTables";
+var $noResults = Srch.ContentBySearch.getControlTemplateEncodedNoResultsMessage(ctx.ClientControl);
+
+var noResultsClassName = "ms-srch-result-noResults";
+
+var ListRenderRenderWrapper = function(itemRenderResult, inCtx, tpl)
+{
+    var iStr = [];
+    iStr.push(itemRenderResult);
+    return iStr.join('');
+}
+
+ctx['ItemRenderWrapper'] = ListRenderRenderWrapper;
+   var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_accordion_");
+   var containerId = encodedId + "container";
+
+AddPostRenderCallback(ctx, function () {		
+		LCC.modules.start($('#' + containerId));		
+});
+
+ctx['ItemRenderWrapper'] = ListRenderRenderWrapper;
+	var properties = "";
+		// Retrieve the properties from the display template data variable
+		var cc = ctx['ClientControl'];
+		if (!Srch.U.n(cc)) {
+		    if (!Srch.U.n(cc.get_propertyMappings)) {
+		        var mappings = cc.get_propertyMappings();
+		        if (!Srch.U.n(mappings) && !Srch.U.w(mappings)) {
+		            properties = Srch.Result.parsePropertyMappingsString(mappings);
+		        }
+		    }
+		}
+_#-->
+
+
+<!--#_
+if (properties['PromoDisplayType'] == "promo")  {	
+	var WPClass = "promoListWebpart";	
+}else{
+	var WPClass = "listWebpart";
+}   
+_#-->
+
+
+<!--#_
+if (properties['PromoDisplayType'] != "promo")  {
+_#-->	
+	<div class="_#= properties['PromoDisplayType'] =#_">	
+<!--#_
+}   
+_#-->
+
+
+	
+	    <div class="mega-promo">
+	        <!--#_
+	        if (properties['Custom Title'].length !== 0)  {   
+	        _#-->
+	        <h2>_#= properties['Custom Title'] =#_</h2>
+	        <!--#_
+	        } 
+	        _#-->
+			    _#= ctx.RenderGroups(ctx) =#_
+		
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+
+<!--#_
+if (ctx.ClientControl.get_shouldShowNoResultMessage())
+{
+_#-->
+        <div class="_#= noResultsClassName =#_">_#= $noResults =#_</div>
+<!--#_
+}
+_#-->
+    	</div>
+
+</body>
+</html>
