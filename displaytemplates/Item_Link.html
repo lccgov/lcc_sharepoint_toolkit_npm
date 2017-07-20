@@ -1,0 +1,58 @@
+<!--
+	Display Template Version 1.0
+	Date: 31/01/2017
+-->
+
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>Item Link</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">urlLink{url Link}:URLOWSURLH;</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a 100x100 picture of the item on the left. The title and the default item description will display to the right of the picture with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://www-alpha.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item_Link.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    <div id="Item_Link">
+
+<!--#_
+
+var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_Accordion_");
+
+
+
+var Title = $getItemValue(ctx, "Title");
+var urlLink = $getItemValue(ctx, "urlLink");
+	if(!urlLink.isEmpty)  {
+		var x = (urlLink.inputValue);
+		var LinkDesc = x.split(',')[1];
+	}
+ _#-->
+
+
+			
+			<a href="_#= urlLink =#_" class="arrow">
+						_#= LinkDesc =#_
+			</a>
+		
+
+
+
+ 	</div>      
+</body>
+</html>

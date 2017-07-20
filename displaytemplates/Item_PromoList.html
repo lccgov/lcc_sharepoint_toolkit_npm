@@ -34,7 +34,6 @@
 
 var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_Promo_");
 var Title = $getItemValue(ctx, "Title");
-var PromoLink = $getItemValue(ctx, "PromoLink");
 var PromoDescrip1 = $getItemValue(ctx, "Promo1");
 var PromoDescrip2 = $getItemValue(ctx, "Promo2");
 var PromoHTML = $getItemValue(ctx, "Promo HTML");
@@ -43,8 +42,15 @@ var PromoCSS = $getItemValue(ctx, "PromoCSS");
 var PromoDisplayType = $getItemValue(ctx, "PromoDisplayType");
 var pictureURL = $getItemValue(ctx, "Picture URL");
 
-
+var PromoLink = $getItemValue(ctx, "PromoLink");
+	if(!PromoLink.isEmpty)  {
+		var x = (PromoLink.inputValue);
+		var LinkDesc = x.split(',')[1];
+	}
  _#-->
+
+
+
 
 		<li class="_#= PromoCSS =#_">
 			<!--#_
@@ -67,7 +73,7 @@ var pictureURL = $getItemValue(ctx, "Picture URL");
 			} 
 			_#-->
 				
-				<span class="info">_#= Title =#_
+				<span class="info">_#= LinkDesc =#_
 						<!--#_
 			if(!PromoDescrip1.isEmpty)  {   
 			_#-->

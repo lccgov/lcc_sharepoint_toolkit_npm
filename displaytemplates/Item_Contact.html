@@ -1,0 +1,59 @@
+<!--
+	Display Template Version 1.0
+	Date: 31/01/2017
+-->
+
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>Item Contact</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">Title{Promo Title}:Title,contactLine1{contactLine1}:contactLine1OWSTEXT,contactLine2{contactLine2}:contactLine2OWSTEXT,contactLine3{contactLine3}:contactLine3OWSTEXT,contactLine4{contactLine4}:contactLine4OWSTEXT,PromoHTML{Promo HTML}:PromoHTMLContentOWSHTML</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a 100x100 picture of the item on the left. The title and the default item description will display to the right of the picture with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://www-alpha.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item_Contact.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    <div id="Item_Contact">
+
+<!--#_
+
+var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_Accordion_");
+
+
+
+var Title = $getItemValue(ctx, "Title");
+var contactLine1 = $getItemValue(ctx, "contactLine1");
+var contactLine2 = $getItemValue(ctx, "contactLine2");
+var contactLine3 = $getItemValue(ctx, "contactLine3");
+var contactLine4 = $getItemValue(ctx, "contactLine4");
+var PromoHTML = $getItemValue(ctx, "PromoHTML");
+
+ _#-->  
+
+     <div class="sectionSubsite">
+    <h3>_#= Title =#_</h3>
+     <p>_#= contactLine1 =#_   
+     <span>_#= contactLine2 =#_</span></p> 
+     <p>_#= contactLine3 =#_ 
+     <span>_#= contactLine4 =#_</span></p> 
+     _#= PromoHTML =#_
+    
+</div>  
+</div>
+</body>
+</html>
