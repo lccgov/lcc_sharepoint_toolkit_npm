@@ -49,7 +49,7 @@
         (_#= ... =#_) token.
     -->
 
-    <div id="description-list" class="description-list">
+    <div id="description-list">
 
 <!--#_ 
 if (!$isNull(ctx.ClientControl) &&
@@ -79,9 +79,11 @@ AddPostRenderCallback(ctx, function () {
 });
  
 _#-->
+<div class="description-list">
 
     _#= ctx.RenderGroups(ctx) =#_
 
+</div>
 
 <!--#_
 if (ctx.ClientControl.get_shouldShowNoResultMessage())
