@@ -47,10 +47,23 @@ var PromoHTML = $getItemValue(ctx, "PromoHTML");
 
      <div class="sectionSubsite">
     <h3>_#= Title =#_</h3>
+    		<!--#_
+			if(!contactLine1.isEmpty)  {   
+			_#-->
      <p>_#= contactLine1 =#_   
      <span>_#= contactLine2 =#_</span></p> 
+     	
+			<!--#_
+			} 
+			_#-->
+            	<!--#_
+			if(!contactLine3.isEmpty)  {   
+			_#-->
      <p>_#= contactLine3 =#_ 
      <span>_#= contactLine4 =#_</span></p> 
+     	<!--#_
+			} 
+			_#-->
      _#= PromoHTML =#_
     
 </div>  
