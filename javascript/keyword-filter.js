@@ -9,11 +9,11 @@
         this.start = function (element) {
             element.on('click', '.js-keyword-submit', function () {
                 var queryString = "?k=" + element.find('.js-keyword').val();
-                var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : "/Pages/NewsSearch.aspx";                   
+                var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : ((_spPageContextInfo.webServerRelativeUrl.length === 1) ? _spPageContextInfo.webServerRelativeUrl.substr(1) : _spPageContextInfo.webServerRelativeUrl) + "/news";                   
                 window.location = newsUrl + queryString;
             });
 
-        }
+        };
     };
 
     global.LCC = LCC;

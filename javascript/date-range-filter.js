@@ -18,11 +18,11 @@
                 var end = LCC.Modules.FormatSearchDate(enddate) || today;
 
                 var queryString = "?startdate=" + start + "&enddate=" + end;
-                var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : "/Pages/NewsSearch.aspx";                   
+                var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : ((_spPageContextInfo.webServerRelativeUrl.length === 1) ? _spPageContextInfo.webServerRelativeUrl.substr(1) : _spPageContextInfo.webServerRelativeUrl) + "/news";                   
                 window.location = newsUrl + queryString;
             });
 
-        }
+        };
     };
 
     LCC.Modules.FormatSearchDate = function (rawDate) {
@@ -32,10 +32,10 @@
 
         var year = rawDate.getFullYear();
         var month = (rawDate.getMonth() + 1);
-        var day = rawDate.getDate()
+        var day = rawDate.getDate();
 
         return year + "/" + month + "/" + day;
-    }
+    };
 
     LCC.Modules.GetDateFromString = function (date) {
         if(!date) {
@@ -49,7 +49,7 @@
 
         return newDate;
 
-    }
+    };
 
     global.LCC = LCC;
 })(window);

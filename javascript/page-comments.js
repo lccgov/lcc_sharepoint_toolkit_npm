@@ -1,5 +1,5 @@
 (function (global, $) {
-        'use strict'
+        'use strict';
 
 	    var LCC = global.LCC || {};
 	    LCC.Modules = LCC.Modules || {};
@@ -57,7 +57,7 @@
 					});
 				}	
 
-            }
+            };
         
         };
 
