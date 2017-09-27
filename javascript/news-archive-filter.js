@@ -31,57 +31,31 @@
 	                var template = Handlebars.compile(source);
 
 					var today = new Date();
-					var newsContentType = ( LCC.Settings.NewsContentType !== undefined ) ? LCC.Settings.NewsContentType : "News Article Page";
-                    $.ajax({
-	                    url: _spPageContextInfo.webAbsoluteUrl + "/_api/lists/getbytitle('pages')/items?$select=LCCMonthYear&$filter=NewsReleaseDate le '" + today.toISOString() + "' and OData__ModerationStatus eq 0 and ContentType eq '" + newsContentType + "'",
-	                    type: "GET",
-	                    dataType: 'json',
-	                    headers: {
-	                        "accept": "application/json;odata=verbose"
-	                    },
-	                    success: function (data) {
 
-	                        var prevYear;
-	                        var prevMonth;
-	                        var years = [];
-	                        var monthsString = ['None', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+					var years = [];
+					var months = [];
+					months.push({ 'month': 1, 'monthAsString': 'Jan' });
+					months.push({ 'month': 2, 'monthAsString': 'Feb' });
+					months.push({ 'month': 3, 'monthAsString': 'Mar' });
+					months.push({ 'month': 4, 'monthAsString': 'Apr' });
+					months.push({ 'month': 5, 'monthAsString': 'May' });
+					months.push({ 'month': 6, 'monthAsString': 'Jun' });
+					months.push({ 'month': 7, 'monthAsString': 'Jul' });
+					months.push({ 'month': 8, 'monthAsString': 'Aug' });
+					months.push({ 'month': 9, 'monthAsString': 'Sep' });
+					months.push({ 'month': 10, 'monthAsString': 'Oct' });
+					months.push({ 'month': 11, 'monthAsString': 'Nov' });
+					months.push({ 'month': 12, 'monthAsString': 'Dec' });
 
-							data.d['results'].sort(function (a, b) {
-								return b.LCCMonthYear - a.LCCMonthYear;
-							});
-	                        $.each(data.d.results, function (index, item) {
-								if (item.LCCMonthYear)
-								{
-									if (typeof prevMonth === 'undefined' || prevMonth != item.LCCMonthYear) {
+					years.push({ 'year': today.getFullYear(), 'months': months });
+					years.push({ 'year': today.getFullYear() - 1, 'months': months });
+					years.push({ 'year': today.getFullYear() - 2, 'months': months });
 
-										var itemYear = item.LCCMonthYear.substring(0, 4);
-										var itemMonth = parseInt(item.LCCMonthYear.substring(4),10);
-										var monthAsString = monthsString[itemMonth];
+					var html = template({ Years: years });
+					$("#archive").html(html);
 
-										if (typeof prevYear === 'undefined' || prevYear != itemYear) {
-											years.push({ 'year': itemYear, 'months': [{ 'month': itemMonth, 'monthAsString': monthAsString }] });
-											prevYear = itemYear;
-										}
-										else {
-											years[years.length - 1].months.push({ 'month': itemMonth, 'monthAsString': monthAsString });
-										}
-										prevMonth = item.LCCMonthYear;
-									}
-								}
-	                        });
-
-	                        var html = template({ Years: years });
-	                        $("#archive").html(html);
-
-							LCC.modules.start($("#newsAccordion"));
-
-	                    },
-	                    error: function (err) {
-	                        var html = "<p>Sorry, there is an error with this filter</p>";
-	                        $("#archive").html(html);
-	                    }
-	                });
-	            }			
+					LCC.modules.start($("#newsAccordion"));
+				}				
 				
 	        }
 	    };

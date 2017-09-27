@@ -9,16 +9,13 @@
         this.start = function (element) {
             element.on('click', '.js-date-range-submit', function () {
 
-                var startdate = element.find('.js-date-range-start').val();
-                var enddate = element.find('.js-date-range-end').val();
+                var startdate = LCC.Modules.GetDateFromString(element.find('.js-date-range-start').val());
+                var enddate = LCC.Modules.GetDateFromString(element.find('.js-date-range-end').val());
                 //moment.js
                 var d = new Date();
-                var mm = d.getMonth() + 1;
-                var dd = d.getDate();
-                var yyyy = d.getFullYear();
-                var today = yyyy + "/" + mm + "/" + dd;
-                var start = startdate || "1900/1/1";
-                var end = enddate || today;
+                var today = LCC.Modules.FormatSearchDate(d);
+                var start = LCC.Modules.FormatSearchDate(startdate) || "1900/1/1";
+                var end = LCC.Modules.FormatSearchDate(enddate) || today;
 
                 var queryString = "?startdate=" + start + "&enddate=" + end;
                 var newsUrl = ( LCC.Settings.NewsUrl !== undefined ) ? LCC.Settings.NewsUrl : "/Pages/NewsSearch.aspx";                   
@@ -27,6 +24,32 @@
 
         }
     };
+
+    LCC.Modules.FormatSearchDate = function (rawDate) {
+        if(!rawDate) {
+            return;
+        }
+
+        var year = rawDate.getFullYear();
+        var month = (rawDate.getMonth() + 1);
+        var day = rawDate.getDate()
+
+        return year + "/" + month + "/" + day;
+    }
+
+    LCC.Modules.GetDateFromString = function (date) {
+        if(!date) {
+            return;
+        }
+
+        // dates are in format dd/mm/yyyy
+        var datebits = date.split('/');
+        var newDate = new Date();
+        newDate.setFullYear(datebits[2], datebits[1] -1, datebits[0]);
+
+        return newDate;
+
+    }
 
     global.LCC = LCC;
 })(window);
