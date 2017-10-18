@@ -54,6 +54,13 @@
 					var html = template({ Years: years });
 					$("#archive").html(html);
 
+					if (window.location.href.indexOf("news?") > -1) {
+					$('h1').after('<a href="#" class="reset btn-default btn"><i class="fa fa-refresh" aria-hidden="true"></i> Reset Filters</a><hr class="resetHr"/>');
+					$(".reset").click(function(){
+					window.location.href = window.location.href.split('?')[0];
+					});
+    	            }
+
 					LCC.modules.start($("#newsAccordion"));
 				}				
 				

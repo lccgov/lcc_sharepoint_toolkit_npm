@@ -1,6 +1,6 @@
 {
   "name": "lcc_sharepoint_toolkit",
-  "version": "0.52.0",
+  "version": "0.53.0",
   "description": "npm package for using the lcc sharepoint toolkit",
   "repository": {
     "type": "git",
