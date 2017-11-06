@@ -51,7 +51,15 @@ var NoText = $getItemValue(ctx, "NoTextDisplay");
 			<div class="carousel-caption">
 			<a href="_#= linkURL.value =#_">
 				<h2><span> _#= line1 =#_</span></h2>
+
+				   		<!--#_
+			if(!line2.isEmpty)  {   
+			_#-->
 				<p>_#=STSHtmlDecode(line2.value)=#_</p>
+             	<!--#_
+	}
+	_#-->
+
 			</a>
 		</div>
 			
