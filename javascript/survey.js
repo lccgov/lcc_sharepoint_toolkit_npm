@@ -21,6 +21,11 @@
 				LCC.Modules.Survey.ValidateForm = function () {
 					var isEasyChecked = false;
 					var radioButtonsEasy = document.getElementsByClassName('radEasy');
+					var radFindNo = $('input[id$="noFind"]');
+
+					if(radFindNo.is(':checked')) {
+						return true;
+					}
 
 					for (var i = 0; i < radioButtonsEasy.length; i++) {
 						if (radioButtonsEasy[i].checked) {
