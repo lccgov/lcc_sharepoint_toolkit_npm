@@ -38,7 +38,8 @@ linkURL.overrideValueRenderer($urlHtmlEncode);
 
 var line1 = $getItemValue(ctx, "Line 1");
 var line2 = $getItemValue(ctx, "Line 2");
-var ArticleDate = $getItemValue(ctx, "Line 3");
+var ArticleDate = $getItemValue(ctx, "Line 3").inputValue;
+var parsedArticleDate = new Date(ArticleDate);
 
 var pictureURL = $getItemValue(ctx, "Picture URL");
 var pictureId = encodedId + "picture";
@@ -82,7 +83,7 @@ _#-->
 }
 _#-->
                         <div width="600px">
-                        <p class="date">_#= ArticleDate =#_ </p>
+                        <p class="date">_#= parsedArticleDate.format('dd MMMM yyyy') =#_ </p>
                         <h3 class="" id="_#= line1Id =#_"> _#= line1 =#_</h3>                  
 <!--#_
 if(!line2.isEmpty)
