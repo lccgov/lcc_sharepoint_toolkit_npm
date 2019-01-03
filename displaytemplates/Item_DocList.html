@@ -8,13 +8,13 @@
 <!--[if gte mso 9]><xml>
 <mso:CustomDocumentProperties>
 <mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
-<mso:ManagedPropertyMapping msdt:dt="string">'Picture URL'{Picture URL}:'PromoImageOWSIMGE;PublishingImage;PictureURL;PictureThumbnailURL','Title'{Title}:'Title','Promo1'{Promo1}:'PromoDescriptionOWSMTXT','Promo2'{Promo2}:'PromoDescriptionTwoOWSMTXT','Promo HTML'{Promo HTML}:'PromoHTMLContentOWSHTML','PromoLink'{Promo Link}:'PromoLinkOWSURLH;Path','PromoIcon'{Promo Icon}:'PromoIconOWSTEXT','FileSize'{File Size}:'Size','FileType'{File Type}:'FileType','PromoCSS'{Promo CSS Class}:'PromoCSSClassOWSTEXT','Custom Title'{Custom Title}:'List Display Web Part','PromoDisplayType'{Promo Display Class Type}:'default','SecondaryFileExtension','ContentTypeId'</mso:ManagedPropertyMapping>
+<mso:ManagedPropertyMapping msdt:dt="string">&#39;Picture URL&#39;{Picture URL}:&#39;PromoImageOWSIMGE;PublishingImage;PictureURL;PictureThumbnailURL&#39;,&#39;Title&#39;{Title}:&#39;Title&#39;,&#39;DocumentTitle&#39;{DocumentTitle}:&#39;DocumentTitleOWSMTXT&#39;,&#39;Promo1&#39;{Promo1}:&#39;PromoDescriptionOWSMTXT&#39;,&#39;Promo2&#39;{Promo2}:&#39;PromoDescriptionTwoOWSMTXT&#39;,&#39;Promo HTML&#39;{Promo HTML}:&#39;PromoHTMLContentOWSHTML&#39;,&#39;PromoLink&#39;{Promo Link}:&#39;PromoLinkOWSURLH;Path&#39;,&#39;PromoIcon&#39;{Promo Icon}:&#39;PromoIconOWSTEXT&#39;,&#39;FileSize&#39;{File Size}:&#39;Size&#39;,&#39;FileType&#39;{File Type}:&#39;FileType&#39;,&#39;PromoCSS&#39;{Promo CSS Class}:&#39;PromoCSSClassOWSTEXT&#39;,&#39;Custom Title&#39;{Custom Title}:&#39;List Display Web Part&#39;,&#39;PromoDisplayType&#39;{Promo Display Class Type}:&#39;default&#39;,&#39;SecondaryFileExtension&#39;,&#39;ContentTypeId&#39;</mso:ManagedPropertyMapping>
 <mso:MasterPageDescription msdt:dt="string"></mso:MasterPageDescription>
 <mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
 <mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
 <mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
 <mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
-<mso:HtmlDesignStatusAndPreview msdt:dt="string">http://www-05.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item_DocList.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://www.leeds.gov.uk/_catalogs/masterpage/Display%20Templates/Content%20Web%20Parts/Item_DocList.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
 <mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
 <mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
 </mso:CustomDocumentProperties>
@@ -29,7 +29,19 @@
 <!--#_
 var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_Promo_");
 var Title = $getItemValue(ctx, "Title");
+
+var path = ctx.CurrentItem.Path;
+
+var path = path.substring(path.lastIndexOf('/') + 1);
+path.split('.');
+path = path.replace(/\.[^/.]+$/, "");
+
+
+var DocumentTitle = $getItemValue(ctx, "DocumentTitle");
 var PromoLink = $getItemValue(ctx, "PromoLink");
+var PromoImgLink = $getItemValue(ctx, "Title");
+var FileExtension = $getItemValue(ctx, "SecondaryFileExtension");
+
 var PromoDescrip1 = $getItemValue(ctx, "Promo1");
 var PromoDescrip2 = $getItemValue(ctx, "Promo2");
 var PromoHTML = $getItemValue(ctx, "Promo HTML");
@@ -39,6 +51,10 @@ var FileSize = $getItemValue(ctx, "FileSize");
 var FileType = $getItemValue(ctx, "FileType");
 var PromoDisplayType = $getItemValue(ctx, "PromoDisplayType");
 var pictureURL = $getItemValue(ctx, "Picture URL");
+
+
+console.log(DocumentTitle);
+
  _#-->
 
 			<!--#_
@@ -55,10 +71,23 @@ var pictureURL = $getItemValue(ctx, "Picture URL");
 					<!--#_
 					} 
 					_#-->
-				
+
 					<a href="_#= PromoLink =#_" rel="_#= PromoIcon =#_">
-						<span class="info">_#= Title =#_
-			            <span class="arrow"></span></span><span class="thirdInfo">PDF _#= FileSize =#_B</span>
+					
+							<!--#_
+							if(Title === path)  {   
+							_#-->
+								<span class="info">_#= path =#_
+			            		<span class="arrow"></span></span><span class="thirdInfo">PDF _#= FileSize =#_B</span>
+							<!--#_
+							}else {
+							_#-->
+                            	<span class="info">_#= Title =#_
+			            		<span class="arrow"></span></span><span class="thirdInfo">PDF _#= FileSize =#_B</span>
+							<!--#_
+							} 
+							_#-->
+					
 					</a>	
 				</li>
 				
@@ -105,7 +134,7 @@ var pictureURL = $getItemValue(ctx, "Picture URL");
 				</li>
 				
 			<!--#_
-			}else{
+			}else if(FileType == "ppt" || FileType == "pptx"){
 			_#-->
 			
 				<li class="_#= FileType =#_ pp equal-item">
@@ -126,8 +155,54 @@ var pictureURL = $getItemValue(ctx, "Picture URL");
 				</li>
 
 			<!--#_
-			}
+			}else if(FileExtension == "png"){
 			_#-->
+			
+				<li class="_#= FileType =#_ equal-item">
+					<!--#_
+					if(!PromoHTML.isEmpty)  {   
+					_#-->
+					
+					<div>_#= STSHtmlDecode(PromoHTML.value) =#_</div>
+			
+					<!--#_
+					} 
+					_#-->
+				
+								
+					<a href="https://www.leeds.gov.uk/docs/_#= PromoImgLink =#_.png" rel="_#= PromoIcon =#_">
+						<span class="info">_#= Title =#_
+			            <span class="arrow"></span></span><span class="thirdInfo">_#= FileExtension =#_ image _#= FileSize =#_B</span>
+					</a>	
+				</li>
+
+			
+			<!--#_
+			}else {
+			_#-->
+				<li class="_#= FileType =#_ equal-item">
+					<!--#_
+					if(!PromoHTML.isEmpty)  {   
+					_#-->
+					
+					<div>_#= STSHtmlDecode(PromoHTML.value) =#_</div>
+			
+					<!--#_
+					} 
+					_#-->
+				
+								
+					<a href="https://www.leeds.gov.uk/docs/_#= PromoImgLink =#_.jpg" rel="_#= PromoIcon =#_">
+						<span class="info">_#= Title =#_
+			            <span class="arrow"></span></span><span class="thirdInfo">_#= FileExtension =#_ image _#= FileSize =#_B</span>
+					</a>	
+				</li>
+
+			
+			<!--#_
+					} 
+			_#-->
+
  	</div>      
 </body>
 </html>
