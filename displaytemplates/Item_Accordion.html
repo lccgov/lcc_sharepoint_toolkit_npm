@@ -10,13 +10,15 @@
 <!--[if gte mso 9]><xml>
 <mso:CustomDocumentProperties>
 <mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
-<mso:ManagedPropertyMapping msdt:dt="string">'Picture URL'{Picture URL}:'PublishingImage;PictureURL;PictureThumbnailURL','Link1 URL'{Link1 URL}:'AccordionLink1OWSURLH','Link2 URL'{Link2 URL}:''AccordionLink2OWSURLH','Link3 URL'{Link3 URL}:''AccordionLink3OWSURLH','Line 1'{Line 1}:'Title','Line 2'{Line 2}:'','Line 3'{Main Body Text}:''AccordionMainBodyOWSMTXT','Custom Title'{Custom Title}:'List Display Web Part','SecondaryFileExtension','ContentTypeId'</mso:ManagedPropertyMapping>
+<mso:ManagedPropertyMapping msdt:dt="string">&#39;Picture URL&#39;{Picture URL}:&#39;PublishingImage;PictureURL;PictureThumbnailURL&#39;,&#39;Link1 URL&#39;{Link1 URL}:&#39;AccordionLink1OWSURLH&#39;,&#39;Link2 URL&#39;{Link2 URL}:&#39;&#39;AccordionLink2OWSURLH&#39;,&#39;Link3 URL&#39;{Link3 URL}:&#39;&#39;AccordionLink3OWSURLH&#39;,&#39;Line 1&#39;{Line 1}:&#39;Title&#39;,&#39;Line 2&#39;{Line 2}:&#39;&#39;,&#39;Line 3&#39;{Main Body Text}:&#39;&#39;AccordionMainBodyOWSMTXT&#39;,&#39;Custom Title&#39;{Custom Title}:&#39;List Display Web Part&#39;,&#39;SecondaryFileExtension&#39;,&#39;ContentTypeId&#39;</mso:ManagedPropertyMapping>
 <mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a 100x100 picture of the item on the left. The title and the default item description will display to the right of the picture with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
 <mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
 <mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
 <mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
 <mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
-<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://www-alpha.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item_Accordion.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://www-at.leeds.gov.uk/_catalogs/masterpage/Display%20Templates/Content%20Web%20Parts/Item_Accordion.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
 </mso:CustomDocumentProperties>
 </xml><![endif]-->
 </head>
@@ -66,21 +68,17 @@ var pictureURL = $getItemValue(ctx, "Picture URL");
 var dataDisplayTemplateTitle = "Accordion";
 
  _#-->
-
         
-		<div class="accordion-drawer">
+        <h3 class="accordion__heading">_#= line1 =#_</h3>
 
-				<a href="#" class="header"><span id="tooltip" class="sr-only">Click to expand</span>_#= line1 =#_</a>
-
-			<div class="content-block">
-				_#= STSHtmlDecode(line3.value) =#_
-			
-				
+        <div class="accordion__panel">
+            _#= STSHtmlDecode(line3.value) =#_    
+            
 <!--#_
 if(!linkURL1.isEmpty)
 {
 _#-->
-				<a href="_#= linkURL1.value =#_" class="btn btn-primary btn-small">_#= linkURL1desc =#_</a>
+            <a href="_#= linkURL1.value =#_" class="btn btn-primary btn-small">_#= linkURL1desc =#_</a>
 <!--#_
 }
 _#-->
@@ -89,22 +87,21 @@ _#-->
 if(!linkURL2.isEmpty)
 {
 _#-->
-				<a href="_#= linkURL2.value =#_" class="btn btn-primary btn-small">_#= linkURL2desc =#_</a>
+            <a href="_#= linkURL2.value =#_" class="btn btn-primary btn-small">_#= linkURL2desc =#_</a>
 <!--#_
 }
 _#-->
-				
+            
 <!--#_
 if(!linkURL3.isEmpty)
 {
 _#-->
 
-				<a href="_#= linkURL3.value =#_" class="btn btn-primary btn-small">_#= linkURL3desc =#_</a> 
+            <a href="_#= linkURL3.value =#_" class="btn btn-primary btn-small">_#= linkURL3desc =#_</a> 
 <!--#_
 }
 _#-->
-  			</div>
-		</div>
+        </div>
 	</div>      
 </body>
 </html>

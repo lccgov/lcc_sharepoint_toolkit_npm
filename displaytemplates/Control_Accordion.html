@@ -14,12 +14,15 @@
 <mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106601002BE308FDB2F0D748A2F7640AD38A72D5</mso:ContentTypeId>
 <mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
 <mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
-<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://leedssafeguardingadults-beta.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Control_Accordion.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://www-at.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Control_Accordion.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
 
 <mso:FSObjType msdt:dt="string">0</mso:FSObjType>
 <mso:FileDirRef msdt:dt="string">sites/uisite/_catalogs/masterpage/Display Templates/Content Web Parts</mso:FileDirRef>
 <mso:ContentType msdt:dt="string">Control Display Template</mso:ContentType>
 <mso:FileLeafRef msdt:dt="string">Control_List.html</mso:FileLeafRef>
+
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
 <mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
 </mso:CustomDocumentProperties>
 </xml><![endif]-->
@@ -62,9 +65,7 @@ var noResultsClassName = "ms-srch-result-noResults";
 var ListRenderRenderWrapper = function(itemRenderResult, inCtx, tpl)
 {
     var iStr = [];
-    iStr.push('<li>');
     iStr.push(itemRenderResult);
-    iStr.push('</li>');
     return iStr.join('');
 }
 
@@ -76,7 +77,7 @@ ctx['ItemRenderWrapper'] = ListRenderRenderWrapper;
 AddPostRenderCallback(ctx, function () {
 		
 		LCC.modules.start($('#' + containerId));
-		
+		ARIAaccordion.create();
 });
 
 ctx['ItemRenderWrapper'] = ListRenderRenderWrapper;
@@ -107,9 +108,9 @@ _#-->
         } 
         _#-->
 
-				<ul id="_#= containerId =#_" class="accordion" data-module="accordion">
+				<div id="_#= containerId =#_" class="accordion" data-aria-accordion="true" data-multi="true" data-default="none">
 					_#= ctx.RenderGroups(ctx) =#_
-				</ul>
+				</div>
 
 
 <!--#_
