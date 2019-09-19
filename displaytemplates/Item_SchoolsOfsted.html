@@ -1,0 +1,106 @@
+﻿<!--
+	Display Template Version 1.0
+	Date: 31/01/2017
+-->
+
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>Item SchoolsOfsted</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">&#39;Link URL&#39;{Link URL}:&#39;PromoLinkOWSURLH;Path&#39;,&#39;Admissions Policy&#39;{Admissions Policy}:&#39;SchoolAdmissionsPolicyOWSLINK&#39;,&#39;Schools Supplementary&#39;{Schools Supplementary}:&#39;SchoolsSupplementaryOWSLINK&#39;,&#39;Cut Off Maps&#39;{Cut Off Maps}:&#39;CutOffMapsOWSLINK&#39;,&#39;View full report&#39;{View full report}:&#39;OfstedReportOWSURLH&#39;,&#39;Custom Title&#39;{Custom Title}:&#39;List Display Web Part&#39;,&#39;Custom Css Class&#39;{Custom CSS class}:&#39;&#39;,&#39;FileExtension&#39;,&#39;SecondaryFileExtension&#39;</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a small thumbnail icon next to a hyperlink of the item title, with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://www.leeds.gov.uk/_catalogs/masterpage/Display Templates/Content Web Parts/Item_SchoolsOfsted.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    <div id="Item_Nav">
+<!--#_
+	var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_2lines_");
+	
+	var linkURL = $getItemValue(ctx, "Link URL");
+	linkURL.overrideValueRenderer($urlHtmlEncode);
+	var iconURL = Srch.ContentBySearch.getIconSourceFromItem(ctx.CurrentItem);
+	
+	var AdmissionsPolicy = $getItemValue(ctx, "Admissions Policy");
+	AdmissionsPolicy.overrideValueRenderer($urlHtmlEncode);
+	
+	var AdmissionPolicayDescr = AdmissionsPolicy.value;
+	
+	var SchoolsSupplementary = $getItemValue(ctx, "Schools Supplementary");
+	var CutOffMaps = $getItemValue(ctx, "Cut Off Maps");
+	var ViewFullReport = $getItemValue(ctx, "View full report");
+		
+	AdmissionsPolicy.overrideValueRenderer($contentLineText);
+	SchoolsSupplementary.overrideValueRenderer($contentLineText);
+	CutOffMaps.overrideValueRenderer($contentLineText);
+	ViewFullReport.overrideValueRenderer($contentLineText);
+		
+	var containerId = encodedId + "container";
+	var pictureLinkId = encodedId + "pictureLink";
+	var pictureId = encodedId + "picture";
+	var dataContainerId = encodedId + "dataContainer";
+	var AdmissionsPolicyLinkId = encodedId + "AdmissionsPolicyLink";
+	var AdmissionsPolicyId = encodedId + "AdmissionsPolicy";
+	var SchoolsSupplementaryLinkId = encodedId + "SchoolsSupplementaryLink";
+	var SchoolsSupplementaryId = encodedId + "SchoolsSupplementary";
+	var CutOffMapsLinkId = encodedId + "CutOffMapsLink";
+	var CutOffMapsId = encodedId + "CutOffMaps";
+	var ViewFullReportLinkId = encodedId + "ViewFullReportLink";
+	var ViewFullReportId = encodedId + "ViewFullReport";
+_#-->
+
+		<!--#_
+		if(!AdmissionsPolicy.isEmpty){
+		_#-->      
+		<li>_#= AdmissionsPolicy =#_</li>
+		<!--#_
+		}
+		if(!SchoolsSupplementary.isEmpty){
+		_#-->
+		<li>_#= SchoolsSupplementary.value =#_</li>
+		<!--#_
+		}
+		if(!CutOffMaps.isEmpty){
+		_#-->
+		<li>_#= CutOffMaps.value =#_</li>
+		<!--#_
+		}
+		
+		if(!ViewFullReport.isEmpty){
+		_#-->
+		<li><a rel="external" href="_#= ViewFullReport.value =#_">View Ofsted Report</a></li>
+		<!--#_
+		}
+		_#-->
+		
+		<!--#_
+
+		
+		if(ViewFullReport.isEmpty){
+		_#-->
+		<li><a href="https://schoolsonlineservices.leeds.gov.uk/Enrol/Website/default.aspx" rel="external">Apply for a place</a></li>
+		<!--#_
+		}
+		_#-->
+
+
+	</div>
+  
+</body>
+</html>
