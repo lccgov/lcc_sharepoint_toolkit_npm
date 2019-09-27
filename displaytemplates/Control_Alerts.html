@@ -62,6 +62,11 @@ var ListRenderRenderWrapper = function(itemRenderResult, inCtx, tpl)
     return iStr.join('');
 }
 ctx['ItemRenderWrapper'] = ListRenderRenderWrapper;
+
+AddPostRenderCallback(ctx, function () {
+		
+		alertStorage.create();
+});
 _#-->
     <ul class="cbs-List">
 
