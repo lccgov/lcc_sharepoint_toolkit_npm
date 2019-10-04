@@ -1,0 +1,91 @@
+﻿<!--
+	Display Template Version 1.0
+	Date: 31/01/2017
+-->
+
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>Item SchoolsAdmissionsPolicy</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">&#39;Link URL&#39;{Link URL}:&#39;PromoLinkOWSURLH;Path&#39;,&#39;Admissions Policy&#39;{Admissions Policy}:&#39;SchoolAdmissionsPolicyOWSLINK&#39;,&#39;Admissions Policy Two&#39;{Admissions Policy Two}:&#39;SchoolAdmissionsPolicyTwoOWSLINK&#39;,&#39;Admissions Policy Three&#39;{Admissions Policy Three}:&#39;SchoolAdmissionsPolicyThreeOWSLINK&#39;,&#39;Custom Title&#39;{Custom Title}:&#39;Admissions Policies&#39;,&#39;Custom Css Class&#39;{Custom CSS class}:&#39;&#39;,&#39;FileExtension&#39;,&#39;SecondaryFileExtension&#39;</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This Item Display Template will show a small thumbnail icon next to a hyperlink of the item title, with an additional line that is available for a custom managed property.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://www.leeds.gov.uk/_catalogs/masterpage/Display%20Templates/Content%20Web%20Parts/Item_SchoolsAdmissionsPolicy.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    <div id="Item_Nav">
+<!--#_
+	var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_2lines_");
+	
+	var linkURL = $getItemValue(ctx, "Link URL");
+	linkURL.overrideValueRenderer($urlHtmlEncode);
+	var iconURL = Srch.ContentBySearch.getIconSourceFromItem(ctx.CurrentItem);
+	
+	var AdmissionsPolicy = $getItemValue(ctx, "Admissions Policy");
+	AdmissionsPolicy.overrideValueRenderer($urlHtmlEncode);
+	var AdmissionPolicayDescr = AdmissionsPolicy.value;
+	AdmissionsPolicy.overrideValueRenderer($contentLineText);
+	
+	var AdmissionsPolicyTwo = $getItemValue(ctx, "Admissions Policy Two");
+	AdmissionsPolicyTwo.overrideValueRenderer($urlHtmlEncode);
+	var AdmissionsPolicyTwoDescr = AdmissionsPolicyTwo.value;
+	AdmissionsPolicyTwo.overrideValueRenderer($contentLineText);
+	
+	var AdmissionsPolicyThree = $getItemValue(ctx, "Admissions Policy Three");
+	AdmissionsPolicyThree.overrideValueRenderer($urlHtmlEncode);
+	var AdmissionsPolicyThreeDescr = AdmissionsPolicyThree.value;
+	AdmissionsPolicyThree.overrideValueRenderer($contentLineText);
+	
+	var containerId = encodedId + "container";
+	var pictureLinkId = encodedId + "pictureLink";
+	var pictureId = encodedId + "picture";
+	var dataContainerId = encodedId + "dataContainer";
+	var AdmissionsPolicyLinkId = encodedId + "AdmissionsPolicyLink";
+	var AdmissionsPolicyId = encodedId + "AdmissionsPolicy";
+		
+	var AdmissionsPolicyTwoId = encodedId + "AdmissionsPolicyTwo";
+	
+	var AdmissionsPolicyThreeId = encodedId + "AdmissionsPolicyThree";
+	
+_#-->
+
+		<!--#_
+		if(!AdmissionsPolicy.isEmpty){
+		_#-->      
+		<li>_#= AdmissionsPolicy =#_</li>
+		<!--#_
+		}
+		
+		if(!AdmissionsPolicyTwo.isEmpty){
+		_#-->      
+		<li>_#= AdmissionsPolicyTwo =#_</li>
+		<!--#_
+		}	
+		
+		if(!AdmissionsPolicyThree.isEmpty){
+		_#-->      
+		<li>_#= AdmissionsPolicyThree =#_</li>
+		<!--#_
+		}		
+		_#-->
+
+	</div>
+  
+</body>
+</html>
