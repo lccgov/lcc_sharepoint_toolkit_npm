@@ -71,8 +71,24 @@ _#-->
 		         <div class="alertInner">
 		            <button type="button" class="close" data-alert="_#= encodedId  =#_" data-dismiss="alert" aria-label="Close">
 		               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-		            <h2>_#= Title =#_</h2>
-		            <p>_#= AlertContent =#_</p>
+                    <!--#_
+                    if(!Title.isEmpty)
+                    {
+                    _#-->
+                    <h2>_#= Title =#_</h2>
+                    <!--#_
+                    }
+                    _#-->
+
+                    <!--#_
+                    if(!AlertContent.isEmpty)
+                    {
+                    _#-->
+                    <p>_#= AlertContent =#_</p>
+                    <!--#_
+                    }
+                    _#-->
+                    
                         <!--#_
                         if(!AlertLink.isEmpty)
                         {
